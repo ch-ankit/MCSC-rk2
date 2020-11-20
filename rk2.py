@@ -3,9 +3,7 @@ table = PrettyTable()
 
 # RK-2 method python program
 
-# function to be solved
-
-
+# function to be solved, f(x, y) = dy/dx
 def f(x, y):
     return (y**2-x**2)/(y**2+x**2)
 
@@ -14,13 +12,13 @@ def f(x, y):
 def rk2(x0, y0, xn, n):
 
     # Calculating step size
-    h = (xn-x0)/n
+    h = round(xn-x0)/n
 
     # print('\n--------SOLUTION--------')
     # print('-------------------------')
     # print('x0\ty0\tyn')
     # print('-------------------------')
-    table.title = '💥💥SOLUTIONS💥💥'
+    table.title = '💥💥  SOLUTIONS  💥💥'
     table.field_names = ['x0', 'y0', 'yn']
     for i in range(n):
         k1 = h * (f(x0, y0))
@@ -35,19 +33,23 @@ def rk2(x0, y0, xn, n):
 
     # print('\nAt x=%.4f, y=%.4f' % (xn, yn))
     print(table)
-    print(f'x={xn:.4f}, y={yn:.4f}')
+    print(f'At x={xn:.4f}, y={yn:.4f}')
 
 
-# Inputs
-print('Enter initial conditions:')
-x0 = float(input('x0 = '))
-y0 = float(input('y0 = '))
 
-print('Enter calculation point: ')
-xn = float(input('xn = '))
+#Driver Code
+if __name__ == '__main__':
+    # Inputs
+    print('Enter the initial conditions:')
+    x0 = float(input('x0 = '))
+    y0 = float(input('y0 = '))
 
-print('Enter number of steps:')
-step = int(input('Number of steps = '))
+    print('Enter the calculation point: ')
+    xn = float(input('xn = '))
 
-# RK2 method call
-rk2(x0, y0, xn, step)
+    print('Enter the number of steps:')
+    step = int(input('Number of steps = '))
+
+    # RK2 method call
+    rk2(x0, y0, xn, step)
+
