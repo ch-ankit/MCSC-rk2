@@ -1,7 +1,6 @@
+# RK-2 method python program
 from prettytable import PrettyTable
 table = PrettyTable()
-
-# RK-2 method python program
 
 # function to be solved, f(x, y) = dy/dx
 def f(x, y):
@@ -32,13 +31,13 @@ def rk2(x0, y0, xn, n):
         x0 = x0+h
 
     # print('\nAt x=%.4f, y=%.4f' % (xn, yn))
+    print('\n')
     print(table)
-    print(f'At x={xn:.4f}, y={yn:.4f}')
+    print(' \n 💥💥   RESULT   💥💥 \n')
+    print(f'At x = {xn:.4f}, y = {yn:.4f} \n')
 
 
-
-#Driver Code
-if __name__ == '__main__':
+def main():
     # Inputs
     print('Enter the initial conditions:')
     x0 = float(input('x0 = '))
@@ -52,4 +51,8 @@ if __name__ == '__main__':
 
     # RK2 method call
     rk2(x0, y0, xn, step)
+
+if __name__ == '__main__':
+    main()
+
 
