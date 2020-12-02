@@ -1,4 +1,5 @@
 # RK-2 method python program
+from math import *
 from prettytable import PrettyTable
 table = PrettyTable()
 
@@ -8,7 +9,7 @@ def f(x, y):
 
 
 # RK-2 method
-def rk2(x0, y0, xn, n):
+def rk2(x0, y0, xn, n, precision):
 
     # Calculating step size
     h = round(xn-x0)/n
@@ -18,13 +19,13 @@ def rk2(x0, y0, xn, n):
     # print('x0\ty0\tyn')
     # print('-------------------------')
     table.title = '💥💥  SOLUTIONS  💥💥'
-    table.field_names = ['x0', 'y0', 'yn']
+    table.field_names = ['x0', 'y0', 'k1', 'k2', 'yn']
     for i in range(n):
         k1 = h * (f(x0, y0))
         k2 = h * (f((x0+h), (y0+k1)))
         k = (k1+k2)/2
         yn = y0 + k
-        table.add_row([f'{value:.4f}' for value in [x0, y0, yn]])
+        table.add_row([f'{value:.4f}' for value in [x0, y0, k1, k2, yn]])
         # print('%.4f\t%.4f\t%.4f' % (x0, y0, yn))
         # print('-------------------------')
         y0 = yn
@@ -34,7 +35,7 @@ def rk2(x0, y0, xn, n):
     print('\n')
     print(table)
     print(' \n 💥💥   RESULT   💥💥 \n')
-    print(f'At x = {xn:.4f}, y = {yn:.4f} \n')
+    print(f'At x = {round(xn, precision)}, y = {round(yn, precision)} \n')
 
 
 def main():
@@ -49,8 +50,10 @@ def main():
     print('Enter the number of steps:')
     step = int(input('Number of steps = '))
 
+    precision = int(input('Enter the required number of decimal places: '))
+
     # RK2 method call
-    rk2(x0, y0, xn, step)
+    rk2(x0, y0, xn, step, precision)
 
 if __name__ == '__main__':
     main()
