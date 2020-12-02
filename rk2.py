@@ -26,7 +26,8 @@ def rk2(x0, y0, xn, n,f, precision):
     h = round((xn-x0)/n,precision)
 
     #Creating the table
-    table.title = '👍👍  SOLUTIONS: RUNGE-KUTTA 2nd ORDER METHOD  👍👍'
+    table.title = '💥💥  SOLUTIONS: RUNGE-KUTTA 2nd ORDER METHOD  💥💥'
+
     table.field_names = ['xn', 'yn', 'k1','k2','yn+1','interval-1','interval-2']
 
     for i in range(n):
@@ -40,7 +41,8 @@ def rk2(x0, y0, xn, n,f, precision):
 
     print('\n')
     print(table)
-    print(' \n 👍👍   RESULT   👍👍 \n')
+
+    print(' \n 💥💥   RESULT   💥💥 \n')
     print(f'At x = {round(xn,precision):.{precision}f}, y = {round(yn,precision):.{precision}f} \n')
 
 
@@ -50,6 +52,9 @@ def main():
     function=Expression(exp,['x','y'])
 
     print('\nEnter the initial conditions [ y(x0) = y0 ] :')
+
+
+    print('Enter the initial conditions:')
     x0 = float(input('x0 = '))
     y0 = float(input('y0 = '))
 
@@ -59,8 +64,10 @@ def main():
     print('\nEnter the number of steps: ')
     step = int(input('Number of steps = '))
 
+
     print('\nEnter the required number of decimal places: ')
     precision = int(input('No. of decimal places: '))
+
     # RK2 method call
     rk2(x0, y0, xn, step, function, precision)
 
