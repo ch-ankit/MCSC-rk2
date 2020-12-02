@@ -1,4 +1,5 @@
 # RK-2 method python program
+from math import *
 from prettytable import PrettyTable
 from Equation import Expression
 from math import sin,cos,exp,log
@@ -47,6 +48,8 @@ def main():
 
     print('Enter the number of steps:')
     step = int(input('Number of steps = '))
+
+    precision = int(input('Enter the required number of decimal places: \t'))
 
     # RK2 method call
     rk2(x0, y0, xn, step, function, precision)
