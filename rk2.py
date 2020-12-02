@@ -43,7 +43,7 @@ def rk2(x0, y0, xn, n,f, precision):
     print(table)
 
     print(' \n 💥💥   RESULT   💥💥 \n')
-    print(f'At x = {round(xn,precision):.{precision}f}, y = {round(yn,precision):.{precision}f} \n')
+    print(f'At x = {round(xn,precision)}, y = {round(yn,precision)} \n')
 
 
 def main():
@@ -52,9 +52,6 @@ def main():
     function=Expression(exp,['x','y'])
 
     print('\nEnter the initial conditions [ y(x0) = y0 ] :')
-
-
-    print('Enter the initial conditions:')
     x0 = float(input('x0 = '))
     y0 = float(input('y0 = '))
 
