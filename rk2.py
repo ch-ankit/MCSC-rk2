@@ -1,30 +1,26 @@
 # RK-2 method python program
 from prettytable import PrettyTable
+from Equation import Expression
+from math import sin,cos,exp,log
 table = PrettyTable()
 
-# function to be solved, f(x, y) = dy/dx
-def f(x, y):
-    return (y**2-x**2)/(y**2+x**2)
-
-
 # RK-2 method
-def rk2(x0, y0, xn, n):
+def rk2(x0, y0, xn, n,f, presision):
 
     # Calculating step size
-    h = round(xn-x0)/n
-
+    h = round((xn-x0)/n,presision)
     # print('\n--------SOLUTION--------')
     # print('-------------------------')
     # print('x0\ty0\tyn')
     # print('-------------------------')
     table.title = '💥💥  SOLUTIONS  💥💥'
-    table.field_names = ['x0', 'y0', 'yn']
+    table.field_names = ['xn', 'yn', 'k1','k2','yn+1','interval-1','interval-2']
     for i in range(n):
         k1 = h * (f(x0, y0))
         k2 = h * (f((x0+h), (y0+k1)))
         k = (k1+k2)/2
         yn = y0 + k
-        table.add_row([f'{value:.4f}' for value in [x0, y0, yn]])
+        table.add_row([f'{round(value,presision):.{presision}f}' for value in [x0, y0,k1,k2, yn,x0,x0+h]])
         # print('%.4f\t%.4f\t%.4f' % (x0, y0, yn))
         # print('-------------------------')
         y0 = yn
@@ -34,11 +30,14 @@ def rk2(x0, y0, xn, n):
     print('\n')
     print(table)
     print(' \n 💥💥   RESULT   💥💥 \n')
-    print(f'At x = {xn:.4f}, y = {yn:.4f} \n')
+    print(f'At x = {round(xn,presision):.{presision}f}, y = {round(yn,presision):.{presision}f} \n')
 
 
 def main():
     # Inputs
+    exp=input('Enter the required expression: y`=f(x,y):')
+    function=Expression(exp,['x','y'])
+    precision= int(input('Enter the presision point'))
     print('Enter the initial conditions:')
     x0 = float(input('x0 = '))
     y0 = float(input('y0 = '))
@@ -50,7 +49,7 @@ def main():
     step = int(input('Number of steps = '))
 
     # RK2 method call
-    rk2(x0, y0, xn, step)
+    rk2(x0, y0, xn, step, function, precision)
 
 if __name__ == '__main__':
     main()
