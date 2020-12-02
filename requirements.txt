@@ -1,2 +1,3 @@
 prettytable==2.0.0
 Equation==1.2.1
+sympy
