@@ -25,7 +25,7 @@ def rk2(x0, y0, xn, n, precision):
         k2 = h * (f((x0+h), (y0+k1)))
         k = (k1+k2)/2
         yn = y0 + k
-        table.add_row([f'{value:.4f}' for value in [x0, y0, k1, k2, yn]])
+        table.add_row([f'{round(value, precision)}' for value in [x0, y0, k1, k2, yn]])
         # print('%.4f\t%.4f\t%.4f' % (x0, y0, yn))
         # print('-------------------------')
         y0 = yn
@@ -50,7 +50,7 @@ def main():
     print('Enter the number of steps:')
     step = int(input('Number of steps = '))
 
-    precision = int(input('Enter the required number of decimal places: '))
+    precision = int(input('Enter the required number of decimal places: \t'))
 
     # RK2 method call
     rk2(x0, y0, xn, step, precision)
