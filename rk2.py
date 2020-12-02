@@ -5,30 +5,33 @@ from prettytable import PrettyTable
 from Equation import Expression
 table = PrettyTable()
 
-#To convert pi from the console into a floating number
+# To convert pi from the console into a floating number
+
+
 def PiConverter(input):
     # Defining dictionary
     symbol={
         'sin': math.sin,
         'pi': math.pi
     }
-    output=""
+    output = ""
     for i in input:
         # If the value of character i.e. "i" is defined as the keyword in the symbol dictonary then it is replaced and appended in output string else the character itself is appended
-        output+=symbol.get(i,i) 
+        output += symbol.get(i, i)
 
-    return output #return the converted value
+    return output  # return the converted value
 
 # RK-2 method
 def rk2(x0, y0, xn, n, f, precision):
 
     # Calculating step size
-    h = round((xn-x0)/n,precision)
+    h = round((xn-x0)/n, precision)
 
     #Creating the table
     table.title = '💥SOLUTIONS: RUNGE-KUTTA 2nd ORDER METHOD`💥'
 
-    table.field_names = ['xn', 'yn', 'k1','k2','yn+1','interval-1','interval-2']
+    table.field_names = ['xn', 'yn', 'k1', 'k2',
+                         'yn+1', 'interval-1', 'interval-2']
 
     for i in range(n):
         k1 = h * (f(x0, y0))
@@ -73,6 +76,7 @@ def main():
         rk2(x0, y0, xn, step, function, precision)
     else:
         print('Error! Either 1 or 2 should be entered.')
+
 
 
 
