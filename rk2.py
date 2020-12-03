@@ -10,8 +10,7 @@ table = PrettyTable()
 
 def PiConverter(input):
     # Defining dictionary
-    symbol={
-        'sin': math.sin,
+    symbol = {
         'pi': math.pi
     }
     output = ""
@@ -22,23 +21,27 @@ def PiConverter(input):
     return output  # return the converted value
 
 # RK-2 method
+
+
 def rk2(x0, y0, xn, n, f, precision):
 
     # Calculating step size
     h = round((xn-x0)/n, precision)
 
-    #Creating the table
+    # Creating the table
     table.title = '💥SOLUTIONS: RUNGE-KUTTA 2nd ORDER METHOD`💥'
 
     table.field_names = ['xn', 'yn', 'k1', 'k2',
-                         'yn+1', 'interval-1', 'interval-2']
+                         'yn+1', 'interval']
 
     for i in range(n):
         k1 = h * (f(x0, y0))
         k2 = h * (f((x0+h), (y0+k1)))
         k = (k1+k2)/2
         yn = y0 + k
-        table.add_row([f'{round(value,precision):.{precision}f}' for value in [x0, y0, k1, k2, yn, x0, x0+h]])
+        a = x0+h
+        table.add_row([f'{round(value,precision):.{precision}f}' for value in [
+                      x0, y0, k1, k2, yn]]+[f'({x0:.{precision}f},{a:.{precision}f})'])
         y0 = yn
         x0 = x0+h
 
@@ -51,8 +54,8 @@ def rk2(x0, y0, xn, n, f, precision):
 
 def main():
     # Inputs
-    exp=(input('\nEnter the required expression:\n y\'=f(x,y): '))
-    function=Expression(exp,['x','y'])
+    exp = (input('\nEnter the required expression:\n y\'=f(x,y): '))
+    function = Expression(exp, ['x', 'y'])
 
     print('\nEnter the initial conditions [ y(x0) = y0 ] :')
     x0 = float(input('x0 = '))
@@ -65,7 +68,8 @@ def main():
     precision = int(input('No. of decimal places: '))
 
     # Take n or h as input as per the user's choice
-    ch = int(input('\nEnter 1 to input the value of n or 2 to input the value h:  \n '))
+    ch = int(
+        input('\nEnter 1 to input the value of n or 2 to input the value h:  \n '))
     if ch == 1:
         step = int(input('Enter the number of steps: \nn = '))
         rk2(x0, y0, xn, step, function, precision)
@@ -78,11 +82,5 @@ def main():
         print('Error! Either 1 or 2 should be entered.')
 
 
-
-
-
 if __name__ == '__main__':
     main()
- 
-
-
